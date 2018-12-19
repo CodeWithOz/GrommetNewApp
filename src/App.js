@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Button, Heading, Grommet } from 'grommet';
+import { Box, Button, Collapsible, Heading, Grommet } from 'grommet';
 import { Notification } from 'grommet-icons';
 
 const theme = {
@@ -30,7 +30,10 @@ const AppBar = props => (
 );
 
 class App extends Component {
+  state = { showSidebar: false };
+
   render() {
+    const { showSidebar } = this.state;
     return (
       <Grommet theme={theme} full>
         <Box fill>
@@ -38,21 +41,29 @@ class App extends Component {
             <Heading level="3" margin="none">
               Grommet Starter app
             </Heading>
-            <Button icon={<Notification />} onClick={() => {}} />
+            <Button
+              icon={<Notification />}
+              onClick={() =>
+                this.setState({ showSidebar: !this.state.showSidebar })
+              }
+            />
           </AppBar>
           <Box direction="row" flex>
             <Box flex align="center" justify="center">
               app body
             </Box>
-            <Box
-              width="medium"
-              background="light-2"
-              elevation="small"
-              align="center"
-              justify="center"
-            >
-              sidebar
-            </Box>
+            <Collapsible direction="horizontal" open={showSidebar}>
+              <Box
+                flex
+                width="medium"
+                background="light-2"
+                elevation="small"
+                align="center"
+                justify="center"
+              >
+                sidebar
+              </Box>
+            </Collapsible>
           </Box>
         </Box>
       </Grommet>
