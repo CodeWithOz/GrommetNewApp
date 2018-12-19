@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Box, Grommet } from 'grommet';
+import { Box, Button, Heading, Grommet } from 'grommet';
+import { Notification } from 'grommet-icons';
 
 const theme = {
   global: {
@@ -32,7 +33,12 @@ class App extends Component {
   render() {
     return (
       <Grommet theme={theme}>
-        <AppBar>Hello Grommet!</AppBar>
+        <AppBar>
+          <Heading level="3" margin="none">
+            Grommet Starter app
+          </Heading>
+          <Button icon={<Notification />} onClick={() => {}} />
+        </AppBar>
       </Grommet>
     );
   }
