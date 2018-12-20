@@ -5,9 +5,10 @@ import {
   Collapsible,
   Heading,
   Grommet,
+  Layer,
   ResponsiveContext
 } from 'grommet';
-import { Notification } from 'grommet-icons';
+import { FormClose, Notification } from 'grommet-icons';
 
 const theme = {
   global: {
@@ -36,7 +37,7 @@ const AppBar = props => (
     background="brand"
     pad={{ left: 'medium', right: 'small', vertical: 'small' }}
     elevation="medium"
-    style={{ zIndex: '100' }}
+    style={{ zIndex: '1' }}
     {...props}
   />
 );
@@ -66,7 +67,7 @@ class App extends Component {
                 <Box flex align="center" justify="center">
                   app body
                 </Box>
-                {size !== 'small' && (
+                {!showSidebar || size !== 'small' ? (
                   <Collapsible direction="horizontal" open={showSidebar}>
                     <Box
                       flex
@@ -79,6 +80,29 @@ class App extends Component {
                       sidebar
                     </Box>
                   </Collapsible>
+                ) : (
+                  <Layer>
+                    <Box
+                      background="light-2"
+                      tag="header"
+                      align="center"
+                      justify="end"
+                      direction="row"
+                    >
+                      <Button
+                        icon={<FormClose />}
+                        onClick={() => this.setState({ showSidebar: false })}
+                      />
+                    </Box>
+                    <Box
+                      fill
+                      background="light-2"
+                      align="center"
+                      justify="center"
+                    >
+                      sidebar
+                    </Box>
+                  </Layer>
                 )}
               </Box>
             </Box>
