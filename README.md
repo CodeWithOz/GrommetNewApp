@@ -1,3 +1,11 @@
+# Grommet New App
+
+I used this app to learn how to use [Grommet](https://v2.grommet.io)
+on a new React app. The instructions for the tutorial can be found
+[here](https://github.com/grommet/grommet-starter-new-app).
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
